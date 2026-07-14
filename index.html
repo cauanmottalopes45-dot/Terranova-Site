@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terra Nova Estética Automotiva | Gravataí - RS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --asphalt-0:#0a0a0c;
+    --asphalt-1:#141417;
+    --asphalt-2:#1c1c20;
+    --line:#2b2b30;
+    --red:#e10600;
+    --red-dark:#9c0400;
+    --white:#f4f4f2;
+    --chrome:#9aa0a6;
+    --chrome-dim:#6b7075;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--asphalt-0);
+    color:var(--white);
+    font-family:'Manrope',sans-serif;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.display{
+    font-family:'Oswald',sans-serif;
+    text-transform:uppercase;
+    letter-spacing:0.01em;
+  }
+  .mono{font-family:'JetBrains Mono',monospace;}
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px;}
+
+  .stripe-divider{
+    position:relative;
+    height:34px;
+    width:100%;
+    background:
+      repeating-linear-gradient(
+        -8deg,
+        var(--red) 0 40px,
+        var(--white) 40px 46px,
+        var(--asphalt-0) 46px 130px
+      );
+  }
+
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(10,10,12,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:14px 24px;max-width:1080px;margin:0 auto;
+  }
+  .brand{
+    display:flex;align-items:center;gap:10px;
+    font-family:'Oswald',sans-serif;font-weight:700;
+    font-size:1.05rem;letter-spacing:0.03em;text-transform:uppercase;
+  }
+  .brand-mark{
+    width:34px;height:34px;border:2px solid var(--red);
+    display:flex;align-items:center;justify-content:center;
+    font-size:0.7rem;font-weight:700;color:var(--red);
+    transform:rotate(-6deg);
+    font-family:'Oswald',sans-serif;
+  }
+  .nav-cta{
+    background:var(--red);color:var(--white);
+    padding:10px 18px;font-weight:700;font-size:0.85rem;
+    text-transform:uppercase;letter-spacing:0.04em;
+    border:none;white-space:nowrap;
+  }
+
+  .hero{
+    position:relative;
+    padding:64px 0 0;
+    background:
+      radial-gradient(ellipse 900px 500px at 80% -10%, rgba(225,6,0,0.16), transparent 60%),
+      linear-gradient(180deg, var(--asphalt-0), var(--asphalt-1));
+  }
+  .hero-inner{
+    display:flex;flex-direction:column;gap:22px;
+    padding-bottom:56px;
+  }
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    font-family:'JetBrains Mono',monospace;
+    font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;
+    color:var(--chrome);
+    border:1px solid var(--line);
+    padding:6px 12px;width:fit-content;
+  }
+  .eyebrow::before{content:"";width:7px;height:7px;background:var(--red);display:inline-block;}
+  .hero h1{
+    font-size:clamp(2.4rem, 7vw, 4.2rem);
+    line-height:1.02;
+    font-weight:700;
+  }
+  .hero h1 .accent{color:var(--red);}
+  .hero p.lede{
+    font-size:1.05rem;line-height:1.6;color:#d7d7d5;
+    max-width:46ch;
+  }
+  .hero-ctas{display:flex;flex-wrap:wrap;gap:14px;margin-top:6px;}
+  .btn-primary{
+    background:var(--red);color:var(--white);
+    padding:16px 28px;font-weight:700;font-size:1rem;
+    text-transform:uppercase;letter-spacing:0.03em;
+    font-family:'Oswald',sans-serif;
+    display:inline-flex;align-items:center;gap:10px;
+    border:1px solid var(--red);
+    transition:background 0.15s ease, transform 0.1s ease;
+  }
+  .btn-primary:hover{background:var(--red-dark);}
+  .btn-primary:active{transform:scale(0.98);}
+  .btn-secondary{
+    padding:16px 26px;font-weight:600;font-size:0.95rem;
+    border:1px solid var(--line);color:var(--white);
+    font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:0.03em;
+  }
+  .hero-proof{
+    display:flex;gap:28px;flex-wrap:wrap;
+    margin-top:18px;padding-top:22px;border-top:1px solid var(--line);
+  }
+  .proof-num{font-family:'JetBrains Mono',monospace;font-size:1.5rem;font-weight:700;color:var(--white);}
+  .proof-label{font-size:0.78rem;color:var(--chrome-dim);letter-spacing:0.02em;}
+
+  .hero-graphic{
+    position:relative;height:150px;margin-top:8px;
+    display:flex;align-items:flex-end;
+  }
+  .hero-graphic svg{width:100%;height:auto;display:block;}
+
+  :focus-visible{outline:2px solid var(--red);outline-offset:3px;}
+
+  .section{padding:64px 0;}
+  .section-head{margin-bottom:34px;max-width:60ch;}
+  .kicker{
+    font-family:'JetBrains Mono',monospace;font-size:0.72rem;
+    letter-spacing:0.14em;text-transform:uppercase;color:var(--red);
+    margin-bottom:10px;display:block;
+  }
+  .section h2{font-size:clamp(1.7rem,4.5vw,2.4rem);font-weight:600;line-height:1.1;}
+  .section p.sub{color:var(--chrome);margin-top:12px;font-size:1rem;line-height:1.6;}
+
+  .why-grid{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+    gap:1px;background:var(--line);border:1px solid var(--line);
+  }
+  .why-card{background:var(--asphalt-0);padding:28px 24px;}
+  .why-card .num{font-family:'JetBrains Mono',monospace;color:var(--red);font-size:0.85rem;}
+  .why-card h3{font-size:1.05rem;margin:10px 0 8px;font-weight:600;text-transform:none;letter-spacing:0;}
+  .why-card p{color:var(--chrome);font-size:0.92rem;line-height:1.55;}
+
+  .sticker{
+    background:var(--asphalt-1);
+    border:1px solid var(--line);
+    max-width:640px;
+  }
+  .sticker-head{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:16px 22px;border-bottom:2px solid var(--red);
+  }
+  .sticker-head .t1{font-family:'Oswald',sans-serif;font-weight:700;letter-spacing:0.04em;font-size:1rem;text-transform:uppercase;}
+  .sticker-head .t2{font-family:'JetBrains Mono',monospace;font-size:0.72rem;color:var(--chrome-dim);}
+  .spec-row{
+    display:flex;justify-content:space-between;align-items:baseline;
+    padding:16px 22px;border-bottom:1px dashed var(--line);
+  }
+  .spec-row .label{font-size:0.98rem;}
+  .spec-row .label small{display:block;color:var(--chrome-dim);font-size:0.78rem;margin-top:2px;}
+  .spec-row .price{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:1.25rem;color:var(--red);white-space:nowrap;}
+  .sticker-foot{padding:18px 22px;background:var(--asphalt-2);}
+  .sticker-foot p{font-size:0.85rem;color:var(--chrome);line-height:1.6;}
+
+  .addon-list{margin-top:28px;}
+  .addon-list h3{font-size:1rem;font-weight:600;text-transform:none;letter-spacing:0;color:var(--chrome);margin-bottom:14px;}
+  .addon-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;}
+  .addon{
+    display:flex;gap:10px;align-items:flex-start;
+    padding:12px 14px;border:1px solid var(--line);font-size:0.9rem;color:#d7d7d5;
+  }
+  .addon .mark{color:var(--red);font-weight:700;}
+
+  .trust-strip{
+    background:var(--asphalt-1);border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+    padding:26px 0;
+  }
+  .trust-row{display:flex;flex-wrap:wrap;gap:36px;justify-content:space-between;align-items:center;}
+  .trust-item{display:flex;gap:12px;align-items:center;color:var(--chrome);font-size:0.9rem;}
+  .trust-item .dot{width:8px;height:8px;background:var(--red);flex-shrink:0;}
+
+  .contact-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:40px;align-items:start;}
+  @media (max-width:760px){.contact-grid{grid-template-columns:1fr;}}
+  .info-row{display:flex;gap:14px;padding:16px 0;border-bottom:1px solid var(--line);}
+  .info-row .ico{color:var(--red);font-family:'JetBrains Mono',monospace;font-weight:700;flex-shrink:0;width:22px;}
+  .info-row .txt strong{display:block;font-size:0.95rem;margin-bottom:2px;}
+  .info-row .txt span{color:var(--chrome);font-size:0.88rem;}
+
+  .cta-panel{
+    background:var(--asphalt-1);border:1px solid var(--line);padding:32px 26px;
+  }
+  .cta-panel h3{font-size:1.3rem;margin-bottom:10px;font-weight:600;text-transform:none;letter-spacing:0;}
+  .cta-panel p{color:var(--chrome);font-size:0.92rem;margin-bottom:22px;line-height:1.55;}
+  .cta-panel .btn-primary{width:100%;justify-content:center;}
+  .note{font-size:0.76rem;color:var(--chrome-dim);margin-top:14px;line-height:1.5;}
+
+  .final-cta{
+    padding:70px 0 90px;text-align:center;
+    background:linear-gradient(180deg, var(--asphalt-1), var(--asphalt-0));
+  }
+  .final-cta h2{font-size:clamp(1.8rem,5vw,3rem);max-width:16ch;margin:0 auto 16px;}
+  .final-cta p{color:var(--chrome);max-width:44ch;margin:0 auto 28px;font-size:1rem;}
+
+  footer{padding:26px 0;border-top:1px solid var(--line);}
+  .foot-row{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;color:var(--chrome-dim);font-size:0.8rem;}
+
+  .float-cta{
+    position:fixed;bottom:18px;right:18px;z-index:60;
+    background:var(--red);color:var(--white);
+    padding:14px 20px;font-weight:700;font-family:'Oswald',sans-serif;
+    text-transform:uppercase;letter-spacing:0.03em;font-size:0.85rem;
+    display:flex;align-items:center;gap:8px;
+    box-shadow:0 8px 24px rgba(225,6,0,0.35);
+  }
+  @media (max-width:600px){
+    .float-cta span.long{display:none;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{transition:none !important;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="nav">
+    <div class="brand">
+      <div class="brand-mark">TN</div>
+      TERRA NOVA
+    </div>
+    <a href="#contato" class="nav-cta">Agendar</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-inner">
+    <span class="eyebrow">Gravataí · RS</span>
+    <h1>Seu carro merece<br>outro nível de <span class="accent">cuidado.</span></h1>
+    <p class="lede">Lavagem detalhada, higienização e polimento automotivo. Paixão por carros e excelência em cada detalhe — sem enrolação, com preço justo.</p>
+    <div class="hero-ctas">
+      <a href="#contato" class="btn-primary">Agendar no WhatsApp →</a>
+      <a href="#precos" class="btn-secondary">Ver tabela de preços</a>
+    </div>
+    <div class="hero-proof">
+      <div>
+        <div class="proof-num">+200</div>
+        <div class="proof-label">pessoas acompanham o trabalho da Terra Nova</div>
+      </div>
+      <div>
+        <div class="proof-num">3</div>
+        <div class="proof-label">serviços núcleo: lavagem · higienização · polimento</div>
+      </div>
+      <div>
+        <div class="proof-num">100%</div>
+        <div class="proof-label">agendamento direto pelo WhatsApp</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-graphic" aria-hidden="true">
+    <svg viewBox="0 0 800 120" preserveAspectRatio="none">
+      <polyline points="0,100 120,100 150,60 260,55 300,60 340,100 800,100" fill="none" stroke="#2b2b30" stroke-width="2"/>
+      <circle cx="185" cy="100" r="16" fill="#0a0a0c" stroke="#e10600" stroke-width="3"/>
+      <circle cx="310" cy="100" r="16" fill="#0a0a0c" stroke="#e10600" stroke-width="3"/>
+    </svg>
+  </div>
+</section>
+
+<div class="stripe-divider" role="presentation"></div>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Por que a Terra Nova</span>
+      <h2>Detalhe é o que separa lavar de transformar.</h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-card">
+        <span class="num">01</span>
+        <h3>Preço justo, sem surpresa</h3>
+        <p>Pacotes fechados por tipo de veículo — carro, SUV ou caminhonete. Você sabe o valor antes de agendar.</p>
+      </div>
+      <div class="why-card">
+        <span class="num">02</span>
+        <h3>Higienização de verdade</h3>
+        <p>Bancos, forração e couro tratados com produtos próprios para cada material, não só um pano molhado.</p>
+      </div>
+      <div class="why-card">
+        <span class="num">03</span>
+        <h3>Acabamento que dura</h3>
+        <p>Polimento e proteção cerâmica pensados para o carro continuar com aspecto de novo por mais tempo.</p>
+      </div>
+      <div class="why-card">
+        <span class="num">04</span>
+        <h3>Atendimento direto</h3>
+        <p>Sem call center. Você fala com quem vai cuidar do seu carro, direto pelo WhatsApp.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="precos">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Tabela de serviços</span>
+      <h2>Lavagem completa, por veículo.</h2>
+      <p class="sub">Pacote base inclui lavagem externa e interna. Serviços adicionais abaixo são sob consulta.</p>
+    </div>
+
+    <div class="sticker">
+      <div class="sticker-head">
+        <span class="t1">Lavagem Completa</span>
+        <span class="t2 mono">TERRA NOVA / GRAVATAÍ-RS</span>
+      </div>
+      <div class="spec-row">
+        <div class="label">Carro<small>hatch e sedã</small></div>
+        <div class="price">R$60</div>
+      </div>
+      <div class="spec-row">
+        <div class="label">SUV<small>porte médio/grande</small></div>
+        <div class="price">R$80</div>
+      </div>
+      <div class="spec-row" style="border-bottom:none;">
+        <div class="label">Caminhonete<small>cabine dupla</small></div>
+        <div class="price">R$100</div>
+      </div>
+      <div class="sticker-foot">
+        <p>Inclui lavagem completa externa e interna, com preço justo — sem taxa escondida.</p>
+      </div>
+    </div>
+
+    <div class="addon-list">
+      <h3>Serviços adicionais (sob consulta no WhatsApp)</h3>
+      <div class="addon-grid">
+        <div class="addon"><span class="mark">+</span> Revitalização de plásticos internos</div>
+        <div class="addon"><span class="mark">+</span> Revitalização de plásticos externos</div>
+        <div class="addon"><span class="mark">+</span> Cristalização dos vidros</div>
+        <div class="addon"><span class="mark">+</span> Restauração de farol</div>
+        <div class="addon"><span class="mark">+</span> Proteção cerâmica (90 dias)</div>
+        <div class="addon"><span class="mark">+</span> Higienização de bancos em tecido</div>
+        <div class="addon"><span class="mark">+</span> Higienização e hidratação de couro</div>
+        <div class="addon"><span class="mark">+</span> Limpeza do teto</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="trust-strip">
+  <div class="wrap trust-row">
+    <div class="trust-item"><span class="dot"></span> Estética automotiva completa</div>
+    <div class="trust-item"><span class="dot"></span> Atende Gravataí e região</div>
+    <div class="trust-item"><span class="dot"></span> Agendamento 100% pelo WhatsApp</div>
+  </div>
+</div>
+
+<section class="section" id="contato">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Onde e como agendar</span>
+      <h2>Marque um horário e deixe seu carro brilhando.</h2>
+    </div>
+    <div class="contact-grid">
+      <div>
+        <div class="info-row">
+          <div class="ico">→</div>
+          <div class="txt"><strong>Endereço</strong><span>Av. Álvares Cabral, 1288 — Gravataí, RS</span></div>
+        </div>
+        <div class="info-row">
+          <div class="ico">→</div>
+          <div class="txt"><strong>Agendamento</strong><span>Somente pelo WhatsApp — sem fila, sem espera no telefone</span></div>
+        </div>
+        <div class="info-row">
+          <div class="ico">→</div>
+          <div class="txt"><strong>Instagram</strong><span>@estetica_terranova</span></div>
+        </div>
+      </div>
+      <div class="cta-panel">
+        <h3>Peça seu horário agora</h3>
+        <p>Chame no WhatsApp, diga o modelo do seu carro e a gente confirma o melhor horário disponível.</p>
+        <a class="btn-primary" href="https://wa.me/5551994382707?text=Ol%C3%A1%2C%20vim%20pelo%20Instagram%20e%20quero%20agendar%20uma%20lavagem" target="_blank" rel="noopener">Chamar no WhatsApp →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="stripe-divider" role="presentation"></div>
+
+<section class="final-cta">
+  <div class="wrap">
+    <h2>Pronto pra ver seu carro brilhar como novo?</h2>
+    <p>Vagas limitadas por dia para manter o padrão de acabamento em cada carro que sai daqui.</p>
+    <a href="#contato" class="btn-primary">Agendar no WhatsApp →</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-row">
+    <span>Terra Nova Estética Automotiva — Gravataí, RS</span>
+    <span>@estetica_terranova</span>
+  </div>
+</footer>
+
+<a class="float-cta" href="#contato" aria-label="Agendar no WhatsApp">
+  💬 <span class="long">Agendar no WhatsApp</span><span class="short" style="display:none;">Agendar</span>
+</a>
+
+</body>
+</html>
